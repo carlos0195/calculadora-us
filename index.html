@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de US</title>
+    <title>Calculadora Produção Faixa VL</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <main class="calculadora-container">
-        <h1>Calculadora de Fator de Pagamento (US)</h1>
+        <h1>Calculadora Produção Faixa VL</h1>
 
         <div class="form-group">
             <label for="servico">Selecione o Serviço:</label>
@@ -23,19 +23,50 @@
         </div>
 
         <button id="btn-calcular">Adicionar ao Cálculo</button>
-        <button id="btn-limpar">Limpar Tudo</button>
+        <button id="btn-historico" class="btn-terciario">Ver Histórico</button>
 
         <div class="resultado-area">
-            <h2>Itens Calculados</h2>
+            <h2>Cálculo Atual</h2>
             <ul id="lista-calculos">
                 </ul>
             <hr>
             <div class="total">
-                <span>TOTAL:</span>
+                <span>TOTAL ATUAL:</span>
                 <span id="valor-total">0.00000 US</span>
             </div>
+            <div class="botoes-acao">
+                <button id="btn-salvar-calculo" class="btn-secundario">Salvar Cálculo</button>
+                <button id="btn-limpar">Limpar Tudo</button>
+            </div>
+        </div>
+
+        <div class="suporte-link">
+            <p>Dúvidas? <a href="https://wa.me/553399736554" target="_blank">Fale com o suporte no WhatsApp</a></p>
         </div>
     </main>
+
+    <div id="modal-historico" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Histórico de Produção</h2>
+            <div class="periodo-navegacao">
+                <button id="btn-periodo-anterior">&lt; Período Anterior</button>
+                <span id="periodo-atual-label"></span>
+                <button id="btn-periodo-seguinte">Período Seguinte &gt;</button>
+            </div>
+            <div id="lista-historico">
+                </div>
+            <div class="total-historico">
+                <span>TOTAL DO PERÍODO:</span>
+                <span id="total-geral-historico">0.00000 US</span>
+            </div>
+            <div class="botoes-backup">
+                <button id="btn-exportar" class="btn-backup">Exportar Histórico (Backup)</button>
+                <button id="btn-importar" class="btn-backup">Importar Histórico (Restaurar)</button>
+                <input type="file" id="arquivo-importar" style="display: none;">
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

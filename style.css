@@ -5,7 +5,7 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
     margin: 0;
     padding: 20px;
@@ -22,24 +22,17 @@ body {
     max-width: 600px;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
     color: #1c1e21;
+    margin-top: 0;
     margin-bottom: 25px;
 }
 
-/* Grupo de formulário (label + input/select) */
-.form-group {
-    margin-bottom: 20px;
-}
+.form-group { margin-bottom: 20px; }
+label { display: block; margin-bottom: 8px; font-weight: bold; }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input[type="number"], select {
+input[type="number"], input[type="date"], select {
     width: 100%;
     padding: 12px;
     border: 1px solid #dddfe2;
@@ -48,9 +41,7 @@ input[type="number"], select {
     font-size: 16px;
 }
 
-/* Botões */
 button {
-    width: 100%;
     padding: 12px;
     border: none;
     border-radius: 6px;
@@ -61,41 +52,35 @@ button {
     margin-bottom: 10px;
 }
 
+/* Estilos dos Botões */
 #btn-calcular {
+    width: 100%;
     background-color: #1877f2;
     color: white;
 }
+#btn-calcular:hover { background-color: #166fe5; }
 
-#btn-calcular:hover {
-    background-color: #166fe5;
-}
+.btn-secundario { background-color: #42b72a; color: white; }
+.btn-secundario:hover { background-color: #36a420; }
 
-#btn-limpar {
-    background-color: #e4e6eb;
-    color: #4b4f56;
-}
+#btn-limpar { background-color: #e4e6eb; color: #4b4f56; }
+#btn-limpar:hover { background-color: #dcdfe3; }
 
-#btn-limpar:hover {
-    background-color: #dcdfe3;
-}
+.btn-terciario { width: 100%; background-color: #f0ad4e; color: white; }
+.btn-terciario:hover { background-color: #ec971f; }
 
-/* Área de resultados */
 .resultado-area {
     margin-top: 30px;
     border-top: 1px solid #dddfe2;
     padding-top: 20px;
 }
-
-h2 {
-    text-align: center;
-    margin-bottom: 15px;
+.botoes-acao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
 }
-
-#lista-calculos {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
+.botoes-acao button { width: 100%; margin: 0; }
 
 #lista-calculos li {
     background-color: #f7f7f7;
@@ -104,18 +89,153 @@ h2 {
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.total {
-    font-size: 20px;
+.item-info { display: flex; align-items: center; gap: 15px; }
+.btn-excluir-item {
+    background-color: #fa3e3e;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    padding: 0;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+.btn-excluir-item:hover { background-color: #e03030; }
+
+#lista-calculos { list-style-type: none; padding: 0; margin: 0; }
+.total { font-size: 20px; font-weight: bold; text-align: right; color: #1877f2; }
+hr { border: none; border-top: 1px solid #dddfe2; margin-top: 20px; margin-bottom: 0; }
+
+/* Link de Suporte */
+.suporte-link { text-align: center; margin-top: 20px; font-size: 14px; }
+.suporte-link a { color: #1877f2; text-decoration: none; font-weight: bold; }
+.suporte-link a:hover { text-decoration: underline; }
+
+/* Estilos do Modal (Janela de Histórico) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px; right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-button:hover, .close-button:focus { color: black; }
+
+.periodo-navegacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+}
+.periodo-navegacao button {
+    background-color: #5bc0de;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    width: auto;
+    margin: 0;
+}
+.periodo-navegacao button:hover { background-color: #31b0d5; }
+.periodo-navegacao button:disabled { background-color: #ccc; cursor: not-allowed; }
+#periodo-atual-label { font-weight: bold; text-align: center; }
+
+#lista-historico {
+    flex-grow: 1; /* Faz a lista ocupar o espaço disponível */
+    max-height: 40vh; /* Altura máxima para a lista */
+    overflow-y: auto;
+}
+.producao-dia { border-bottom: 1px solid #ddd; padding: 5px 0; }
+.producao-dia:last-child { border-bottom: none; }
+.producao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 4px;
+}
+.producao-header.clicavel { cursor: pointer; }
+.producao-header.clicavel:hover { background-color: #f9f9f9; }
+.detalhes-producao {
+    display: none;
+    list-style-type: none;
+    padding: 10px 0 0 20px;
+    margin-top: 10px;
+    border-top: 1px dashed #eee;
+}
+.item-detalhe { display: flex; justify-content: space-between; padding: 2px 0; font-size: 14px; }
+.btn-excluir-producao {
+    background-color: #fa3e3e;
+    color: white;
+    width: 24px; height: 24px;
+    line-height: 24px;
+    padding: 0;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.btn-excluir-producao:hover { background-color: #e03030; }
+
+.total-historico {
+    font-size: 22px;
     font-weight: bold;
     text-align: right;
     margin-top: 20px;
-    color: #1877f2;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    color: #42b72a;
+    flex-shrink: 0;
 }
 
-hr {
-    border: none;
-    border-top: 1px solid #dddfe2;
+.botoes-backup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    flex-shrink: 0;
+}
+.botoes-backup button {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+}
+.btn-backup {
+    background-color: #777;
+    color: white;
+}
+.btn-backup:hover {
+    background-color: #555;
 }
