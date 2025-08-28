@@ -1,0 +1,121 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container principal da calculadora */
+.calculadora-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    color: #1c1e21;
+    margin-bottom: 25px;
+}
+
+/* Grupo de formulário (label + input/select) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Botões */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+#btn-calcular {
+    background-color: #1877f2;
+    color: white;
+}
+
+#btn-calcular:hover {
+    background-color: #166fe5;
+}
+
+#btn-limpar {
+    background-color: #e4e6eb;
+    color: #4b4f56;
+}
+
+#btn-limpar:hover {
+    background-color: #dcdfe3;
+}
+
+/* Área de resultados */
+.resultado-area {
+    margin-top: 30px;
+    border-top: 1px solid #dddfe2;
+    padding-top: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#lista-calculos {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#lista-calculos li {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+    color: #1877f2;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #dddfe2;
+    margin-top: 20px;
+}

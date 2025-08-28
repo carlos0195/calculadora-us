@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de US</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="calculadora-container">
+        <h1>Calculadora de Fator de Pagamento (US)</h1>
+
+        <div class="form-group">
+            <label for="servico">Selecione o Serviço:</label>
+            <select id="servico">
+                </select>
+        </div>
+
+        <div class="form-group">
+            <label id="label-quantidade" for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" placeholder="Digite a quantidade aqui...">
+        </div>
+
+        <button id="btn-calcular">Adicionar ao Cálculo</button>
+        <button id="btn-limpar">Limpar Tudo</button>
+
+        <div class="resultado-area">
+            <h2>Itens Calculados</h2>
+            <ul id="lista-calculos">
+                </ul>
+            <hr>
+            <div class="total">
+                <span>TOTAL:</span>
+                <span id="valor-total">0.00000 US</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
